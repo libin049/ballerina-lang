@@ -10,12 +10,15 @@ public function main() {
             string s = "Colombo";
             io:println("[w1] i: ", i, " s: ", s);
             // Return of worker `w1`.
+            (i, s) -> w2;
             return (i, s);
         }
 
         worker w2 returns float {
             float f = 10.344;
             io:println("[w2] f: ", f);
+            (int, string) vW1 = (0, 1.0);
+            vW1 = <- w1;
             // Return of worker `w2`.
             return f;
         }
